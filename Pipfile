@@ -10,7 +10,9 @@ pypdf = "*"
 setuptools = "*"
 pandas = "*"
 pytest = "*"
+"pdfminer.six" = "*"
 assignment0 = {file = ".", editable = true}
+pytest-mock = "*"
 
 [dev-packages]
 
