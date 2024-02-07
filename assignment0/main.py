@@ -132,7 +132,7 @@ def populatedb(db, data):
     # Commit the changes to the database.
     db.commit()
     # Remove the temporary PDF file.
-    os.remove("./docs/temp.pdf")
+    # os.remove("./docs/temp.pdf")
 
 # Define a function to generate a status report from the database.
 def status(db):
