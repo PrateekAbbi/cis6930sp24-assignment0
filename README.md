@@ -72,7 +72,7 @@ The Norman PD Incident Data Extractor is a Python package developed for the CIS 
 
 ---
 
-### Known Limitations
+### Bugs and Assumptions
 
 - Assumes a consistent format for PDF incident reports.
 - May not cover all edge cases for error handling, especially with malformed PDFs.
