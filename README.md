@@ -1,75 +1,95 @@
-### Name:
-Prateek Abbi
+### Student: Prateek Abbi
+### UFID: 89387132
 
-### Assignment Description
-This project is designed to automate the process of fetching, processing, and storing incident data from specified sources. The `main.py` script is responsible for downloading incident reports in PDF format, extracting relevant information, and storing it in a SQLite database for easy access and manipulation. The `test_random.py` file contains tests to ensure the reliability and correctness of the functionality provided by `main.py`.
+---
 
-### How to Install
-To set up your environment to run these scripts, you should use `pipenv` for managing dependencies. Ensure you have `pipenv` installed; if not, you can install it using pip:
+### Project Overview
 
-```bash
-pip install pipenv
-or 
-pip3 install pipenv (FOR MAC)
-```
+The Norman PD Incident Data Extractor is a Python package developed for the CIS 6930 Spring 2024 course. This project automates the extraction of incident data from PDF files available on the Norman, Oklahoma Police Department website and stores it in an SQLite database. It facilitates efficient data analysis and reporting by parsing specific fields from the PDF files and performing database operations.
 
-Once `pipenv` is installed, navigate to the project directory and run the following command to install the required packages:
+---
 
-```bash
-pipenv install
-```
+### Installation Instructions
 
-### How to Run
+#### Prerequisites
+- Python 3.x
+- pip or pip3 (for Mac users)
 
-#### main.py
-To execute the main script, you will need to use `pipenv` to run the script within the virtual environment. Here is a basic command to start the script:
+#### Setup Environment
+1. **Install `pipenv`:** If `pipenv` is not installed on your system, you can install it using pip. Open your terminal and run:
+    ```bash
+    pip install pipenv
+    # or for Mac
+    pip3 install pipenv
+    ```
 
-```bash
-pipenv run python assignment0/main.py --incidents <URL>
-```
+2. **Install Dependencies:** Navigate to your project directory in the terminal and run the following command to set up your environment and install the required packages:
+    ```bash
+    pipenv install
+    ```
 
-While Entering the URL, keep in mind to put in the URL of Incident summaries from the link https://www.normanok.gov/public-safety/police-department/crime-prevention-data/department-activity-reports.
+---
 
-#### test_random.py
-To run the tests, you can use `pytest` within the virtual environment as follows:
+### Usage Guide
 
-```bash
-pipenv run pytest
-```
+#### Running the Main Script
+- To fetch and process incident data, execute `main.py` using `pipenv` with the following command:
+    ```bash
+    pipenv run python assignment0/main.py --incidents <URL>
+    ```
+    Replace `<URL>` with the link to the incident summaries from [Norman PD's Department Activity Reports](https://www.normanok.gov/public-safety/police-department/crime-prevention-data/department-activity-reports).
 
-### Functions
+#### Running Tests
+- To run unit tests, use the following command:
+    ```bash
+    pipenv run pytest
+    ```
 
-#### main.py
-- `checkdatetime(str)`: Validates if the provided string can be parsed into a datetime object.
-- `fetchincidents(url)`: Fetches a PDF file containing incident data from the specified URL.
-- Additional functions related to PDF processing and database interactions would be described here.
+---
 
-#### test_random.py
-- Contains unit tests for functions defined in `main.py` using the `pytest` framework and mocks.
+### Key Functionalities
 
-### Database Development
-The script uses a SQLite database to store incident data. It involves creating tables, inserting records, and potentially querying these records for further processing or analysis.
+- **Data Extraction:** Parses PDF files to extract incident data.
+- **Database Management:** Inserts extracted data into an SQLite database for efficient querying and analysis.
+- **Data Analysis:** Provides summaries of incidents by type and frequency.
 
-### Bugs and Assumptions
-- The script assumes that all PDF files follow a specific format for incident reports.
-- Error handling may not cover all edge cases, especially for malformed PDFs or unexpected data formats.
-- The database schema is designed with the current understanding of the incident data; changes in the data format may require schema adjustments.
-- Assuming that in any PDF file only location and nature of the incident can be missing and every other data is there.
-- For the data where location contains "RAMP", I have assumed that Nature is getting pushed into Nature_ORI, so I have adjusted my code logic based on that. 
+---
 
-### Packages Used
-#### Argparse
-- The URL of the PDF file from which we need to read the data, is getting passed as an argument from the Command line terminal. So, to read that argument, I have used Argparse
-#### urllib
-- To open the parsed URL, this package is used. 
-#### Certifi and ssl
-- I have used these packages for the ssl certification of the website.
-#### sqlite3
-- To operate on sqlite database from python, this package has been used. 
-#### Fitz
-- I have used this package to open the PDF file. The default package which Prof asked us to use was giving some version error to me. So I had to shift to another pacakge for getting the data from PDF. 
+### Technical Details
 
-### Demo
-To demonstrate the execution and functionality of the scripts, include a gif or video link here showing how the scripts are executed and their expected outcomes.
+#### Main Components
 
-This README template provides a comprehensive guide for understanding, installing, and using the scripts. Modify the sections as necessary to fit the specific details and requirements of your project.
+- `fetchincidents(url)`: Downloads the PDF file from the specified URL.
+- `extractincidents(url)`: Extracts data from the PDF file and prepares it for database insertion.
+- `createdb(db)`: Initializes the SQLite database and tables if they do not exist.
+- `populatedb(db, data)`: Inserts parsed incident data into the database.
+- `status(db)`: Summarizes the incident data stored in the database by type and frequency.
+
+#### Testing Components
+
+- **test_random.py**: Contains unit tests for verifying the functionality of main components using the `pytest` framework.
+- **test_download.py**: Tests the download functionality to ensure PDFs are fetched correctly.
+
+---
+
+### Known Limitations
+
+- Assumes a consistent format for PDF incident reports.
+- May not cover all edge cases for error handling, especially with malformed PDFs.
+- The database schema is designed based on current incident data formats and may require updates if formats change.
+- Specific assumptions are made for handling data anomalies (e.g., handling "RAMP" in location fields).
+
+---
+
+### Dependencies
+
+- **Argparse**: For parsing command-line arguments.
+- **urllib**: For opening URLs.
+- **Certifi** and **ssl**: For SSL certification handling.
+- **sqlite3**: For SQLite database operations.
+- **Fitz**: For reading PDF files (alternative to the package recommended by the course due to version conflicts).
+
+---
+
+### Demonstration
+[DEMO Video](https://youtu.be/XbHTRp2-7OQ)

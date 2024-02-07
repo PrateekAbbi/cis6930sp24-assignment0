@@ -13,6 +13,7 @@ pytest = "*"
 "pdfminer.six" = "*"
 assignment0 = {file = ".", editable = true}
 pytest-mock = "*"
+requests = "*"
 
 [dev-packages]
 
