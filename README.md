@@ -12,7 +12,7 @@ The Norman PD Incident Data Extractor is a Python package developed for the CIS 
 ### Installation Instructions
 
 #### Prerequisites
-- Python 3.x
+- Python 3.11
 - pip or pip3 (for Mac users)
 
 #### Setup Environment
