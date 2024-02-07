@@ -26,13 +26,13 @@ def fetchincidents(url):
     data = urllib.request.urlopen(urllib.request.Request(url, headers=headers), context=context).read()
 
     # Save the downloaded data to a temporary PDF file.
-    with open('./docs/temp.pdf', 'wb') as f:
+    with open('temp.pdf', 'wb') as f:
         f.write(data)
 
 # Define a function to extract incident data from the fetched PDF.
 def extractincidents():
     # Open the temporary PDF file.
-    doc = fitz.open("./docs/temp.pdf")
+    doc = fitz.open("temp.pdf")
 
     all_text = ""
     # Iterate through each page in the PDF and extract text.
@@ -132,7 +132,7 @@ def populatedb(db, data):
     # Commit the changes to the database.
     db.commit()
     # Remove the temporary PDF file.
-    # os.remove("./docs/temp.pdf")
+    os.remove("temp.pdf")
 
 # Define a function to generate a status report from the database.
 def status(db):
